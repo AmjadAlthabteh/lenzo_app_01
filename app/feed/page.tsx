@@ -1,27 +1,29 @@
-"use client"
-import { FeedCard } from '@/components/FeedCard'
-import useSWR from 'swr'
-import { useEffect } from 'react'
+"use client";
+import { FeedCard } from "@/components/FeedCard";
+import useSWR from "swr";
+import { useEffect } from "react";
 
-const fetcher = (url: string) => fetch(url).then((r) => r.json())
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
 
 export default function FeedPage() {
-  const { data, mutate } = useSWR('/api/posts', fetcher, { suspense: false })
+  const { data, mutate } = useSWR("/api/posts", fetcher, { suspense: false });
 
   useEffect(() => {
-    const ev = new EventSource('/api/rt/stream')
+    const ev = new EventSource("/api/rt/stream");
     ev.onmessage = (e) => {
       try {
-        const msg = JSON.parse(e.data)
-        if (msg?.type === 'event' && msg?.data?.type === 'post.created') {
-          mutate(async (curr: any) => [msg.data.post, ...(curr || [])], { revalidate: false })
+        const msg = JSON.parse(e.data);
+        if (msg?.type === "event" && msg?.data?.type === "post.created") {
+          mutate(async (curr: any) => [msg.data.post, ...(curr || [])], {
+            revalidate: false,
+          });
         }
       } catch {}
-    }
-    return () => ev.close()
-  }, [mutate])
+    };
+    return () => ev.close();
+  }, [mutate]);
 
-  const posts = data || []
+  const posts = data || [];
 
   return (
     <main className="container-page flex-1 py-10">
@@ -40,5 +42,5 @@ export default function FeedPage() {
         ))}
       </div>
     </main>
-  )
+  );
 }

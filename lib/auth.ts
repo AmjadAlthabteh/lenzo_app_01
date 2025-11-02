@@ -48,5 +48,3 @@ export const {
   ],
   trustHost: true,
 });
-
-export { GET, POST }

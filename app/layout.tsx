@@ -5,8 +5,9 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Lenso — See Through Others\' Eyes',
-  description: 'Share the experiences you witness so others can feel like they were there.',
+  title: "Lenso — See Through Others' Eyes",
+  description:
+    'Share the experiences you witness so others can feel like they were there.',
 }
 
 export default function RootLayout({
@@ -28,3 +29,4 @@ export default function RootLayout({
     </html>
   )
 }
+

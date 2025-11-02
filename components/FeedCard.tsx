@@ -12,8 +12,12 @@ export function FeedCard({ user, title, description, mediaUrl, tags = [] }: Prop
     <article className="overflow-hidden rounded-xl border bg-white">
       <div className="aspect-video bg-gray-100 flex items-center justify-center text-gray-400">
         {mediaUrl ? (
-          // placeholder: in a real app we would render image/video
-          <span className="truncate">{mediaUrl}</span>
+          mediaUrl.match(/\.(mp4|webm|ogg)(\?|$)/i) ? (
+            <video className="h-full w-full object-cover" src={mediaUrl} controls />
+          ) : (
+            // avoid next/image domain config by using img directly for now
+            <img className="h-full w-full object-cover" src={mediaUrl} alt={title} />
+          )
         ) : (
           <span>media preview</span>
         )}
@@ -33,4 +37,3 @@ export function FeedCard({ user, title, description, mediaUrl, tags = [] }: Prop
     </article>
   )
 }
-
