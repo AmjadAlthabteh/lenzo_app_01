@@ -54,16 +54,22 @@ model VerificationToken {
 }
 
 model Post {
-  id          String    @id @default(cuid())
-  title       String
-  story       String
-  summary     String?
-  mediaUrl    String?
-  authorId    String
-  author      User      @relation(fields: [authorId], references: [id])
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  tags        PostTag[]
+  id              String    @id @default(cuid())
+  title           String
+  story           String
+  summary         String?
+  mediaUrl        String?
+  mediaType       String?   // image, video, etc.
+  aiDescription   String?   // AI-generated image description
+  aiObjects       String?   // Detected objects (JSON array)
+  aiColors        String?   // Dominant colors (JSON array)
+  aiLabels        String?   // AI-detected labels/categories (JSON array)
+  aiConfidence    Float?    // AI analysis confidence score
+  authorId        String
+  author          User      @relation(fields: [authorId], references: [id])
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  tags            PostTag[]
 }
 
 model Tag {
