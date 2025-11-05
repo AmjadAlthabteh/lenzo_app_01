@@ -1,0 +1,46 @@
+Lenso — About, Vision, and Plans
+
+About Lenso
+We built Lenso so people can share authentic experiences and help others feel like they were there. It’s a community-first space where short stories, moments, photos, and videos are easy to post and delightful to explore.
+
+Our Vision
+- Empower anyone to capture and share meaningful experiences.
+- Help people discover real perspectives across cultures and places.
+- Use AI responsibly to enhance (not replace) human stories.
+- Keep the community welcoming, safe, and positive.
+
+Guiding Principles
+- Authenticity over virality: Real moments matter most.
+- Safety by design: Smart moderation and simple controls.
+- Creator respect: Clear ownership, attribution, and choice.
+- Performance and privacy: Fast, reliable, and minimal data collection.
+
+Near‑Term Roadmap (0–3 months)
+- Rich posting: Multiple photos/videos per post, simple editing.
+- Better discovery: Trending tags, smarter search, and curated collections.
+- Social basics: Comments, reactions, and lightweight profiles.
+- AI assists: Title/summary/hashtags suggestions with clear user controls.
+- Moderation: Automated checks plus user reporting and appeals.
+- Mobile polish: Improved responsiveness and touch interactions.
+
+Mid‑Term Plans (3–9 months)
+- Real‑time features: Live rooms and event threads.
+- Collaboration: Co‑authored posts and series.
+- Creator tools: Drafts, scheduled posts, analytics.
+- Trust and safety: Community guidelines, transparency reports.
+- Integrations: S3 and CDN hardening, export/share options.
+
+Future Ideas (Exploration)
+- Location layers with privacy‑first controls.
+- AI copilots for multilingual captions and accessibility (alt text, transcripts).
+- Offline capture with sync.
+- Thematic channels and community‑run collections.
+
+How We’ll Measure Progress
+- Quality of experiences shared (not just quantity).
+- Community safety and satisfaction.
+- Creator success and retention.
+- Performance and reliability.
+
+Thanks for building Lenso with us.
+

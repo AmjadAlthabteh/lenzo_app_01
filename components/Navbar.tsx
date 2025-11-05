@@ -11,6 +11,7 @@ export async function Navbar() {
         <nav className="flex items-center gap-4 text-sm">
           <Link href="/feed" className="text-gray-600 hover:text-gray-900">Feed</Link>
           <Link href="/upload" className="text-gray-600 hover:text-gray-900">Upload</Link>
+          <Link href="/about" className="text-gray-600 hover:text-gray-900">About</Link>
           <SignInOut userName={session?.user?.name || null} />
         </nav>
       </div>
