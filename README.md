@@ -6,7 +6,7 @@ Share the experiences you witness so others can feel like they were there.
 Tech stack
 ----------
 - Next.js 14 (App Router) + TypeScript
-- Tailwind CSS
+- Tailwind CSS  <- css
 - Edge API route for AI (OpenAI) — summarize + moderation
 - NextAuth (GitHub + Guest) with Prisma adapter
 - Prisma + SQLite for local dev
