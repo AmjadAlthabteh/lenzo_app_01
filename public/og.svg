@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <radialGradient id="r1" cx="20%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r2" cx="80%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0b0b0b"/>
+  <rect width="1200" height="630" fill="url(#r1)"/>
+  <rect width="1200" height="630" fill="url(#r2)"/>
+  <g transform="translate(100, 180)">
+    <rect x="0" y="0" width="140" height="140" rx="28" fill="white" fill-opacity="0.06" stroke="white" stroke-opacity="0.12"/>
+    <circle cx="70" cy="70" r="40" fill="url(#g)"/>
+    <rect x="220" y="28" width="4" height="84" fill="url(#g)"/>
+    <text x="250" y="92" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="72" fill="white" fill-opacity="0.9" letter-spacing="1.5">LuxAI</text>
+  </g>
+  <text x="100" y="360" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="36" fill="#d4d4d8">AI‑Powered Lighting OS</text>
+  <text x="100" y="410" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="22" fill="#9ca3af">Autonomous scenes • Adaptive circadian • Energy optimization • Open integrations</text>
+  <rect x="100" y="450" width="260" height="50" rx="25" fill="white"/>
+  <text x="130" y="483" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20" fill="#0b0b0b">Request Access</text>
+</svg>

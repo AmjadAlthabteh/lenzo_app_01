@@ -1,0 +1,1 @@
+import Card3D from "@/components/Card3D";`r`nimport SceneComposer from "@/components/SceneComposer";`r`nimport CommandPalette from "@/components/CommandPalette";import CommandPalette from "@/components/CommandPalette";`r`nimport SearchButton from "@/components/SearchButton";

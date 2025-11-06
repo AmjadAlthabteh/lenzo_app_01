@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.luxai.dev" }],
+      "destination": "https://luxai.dev/$1",
+      "permanent": true
+    }
+  ]
+}
+

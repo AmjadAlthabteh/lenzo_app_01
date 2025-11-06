@@ -1,0 +1,64 @@
+LuxAI — AI Tasks Rundown (notes for Amjad)
+
+Scope
+- Summarizes current experimental AI task flows on the site and near‑term ideas.
+- Clarifies what’s implemented client‑side vs. future server integrations.
+
+Implemented (client-side mocks)
+- Scene Composer (section: #composer)
+  - Parses a natural language prompt for brightness %, warmth (warm/neutral/cool), and hue topics
+  - Provides quick presets (Focus, Relax, Sunset, Daylight, Studio)
+  - Saves scenes locally and allows reloading a saved scene
+  - “Apply” triggers a toast only (no device control yet)
+- Command Palette (Ctrl/Cmd+K)
+  - Quick navigation to sections; special case for opening LuxAI OS
+  - Lightweight search across section labels
+- Lux Console (backtick `)
+  - CLI‑like command parser for `lux` commands (on/off, set brightness/hue, effects)
+  - Bridges to OS panel via custom DOM events
+- LuxAI OS panel
+  - Visual room controls (Living, Kitchen, Bedroom, Studio)
+  - Effects: off, pulse, wave (GPU‑friendly animation, reduced‑motion aware)
+  - Receives commands from CLI and Command Palette
+- Command Bridge (polling /api/command)
+  - Polls backend for a new command id+text, runs it locally, and displays a toast
+  - Useful for future remote control / webhooks / dashboards
+
+What’s Next (server + data)
+- Scene Proposal API
+  - POST /api/scene/propose { prompt, room?, time?, latitude? }
+  - Returns concrete scene params + safety clamping + reasoning snippet
+  - Can back with a stateless LLM call or rules first
+- Persist Scenes
+  - POST /api/scene { name, brightness, hue, warmth }
+  - Auth optional for now (dev mode), then add RLS/tenant scoping
+- Device Adapters
+  - Abstractions for Matter/HomeKit/MQTT/REST
+  - Start with a mock adapter; togglable in .env
+- Energy Optimization
+  - Simple baseline cost model (kWh price, schedules), comfort window bounds
+  - Per‑room target brightness curve (time of day)
+  - Output: delta suggestions + “Apply all”
+
+Performance Notes
+- Kept animations to CSS transforms/opacity where possible
+- Added `content-visibility: auto` to heavy below‑the‑fold sections (AI Tasks, Composer, Ideas)
+- Command Palette logic simplified; removed duplicated path; minimal allocations
+- Aurora effect: toggle + reduced‑motion fallback; mix‑blend kept modest
+
+SEO/Sharing
+- Added `public/og.svg` and wired to Next metadata (OG + Twitter)
+- `metadataBase` prefers `NEXT_PUBLIC_SITE_URL` else defaults to luxinai.dev
+
+Open Questions / Ideas
+- Should Command Bridge support POST to push output back (sse/log)?
+- Consider a simple user profile to save scenes across devices
+- Evaluate background task to apply circadian baseline per room
+- Add on-device safety caps for brightness at night windows
+
+How to Test (local)
+- Run `npm run dev`; open http://localhost:3000
+- Press ` to open the Lux Console, try: `lux help`, `lux os`, `lux set living brightness 40`
+- Press Ctrl/Cmd+K for Command Palette; choose “Open LuxAI OS”
+- Try AI Tasks → Scene Composer; enter “warm sunset 40% mood: Golden Hour”
+
