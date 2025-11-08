@@ -1,4 +1,10 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About - Lenso',
+  description: 'Learn how Lenso uses AI to power anonymous photo and video sharing with automatic organization and moderation.',
+}
 
 export default function AboutPage() {
   return (

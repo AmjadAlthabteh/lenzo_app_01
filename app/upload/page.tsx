@@ -102,8 +102,8 @@ export default function UploadPage() {
         throw new Error(t || 'Failed to publish')
       }
       const data = await res.json()
-      setTitle(''); setStory(''); setMediaUrl(''); setAiSummary(null); setAiTags(null)
-      alert('Published! Check the feed.')
+      setTitle(''); setStory(''); setMediaUrl(''); setAiSummary(null); setAiTags(null); setFile(null); setPreviewUrl(null)
+      alert('Shared anonymously! Check the feed.')
     } catch (err: any) {
       setError(err?.message || 'Failed to publish')
     }
@@ -114,10 +114,10 @@ export default function UploadPage() {
       <div className="container-page">
         <div className="text-center mb-12 fade-in">
           <h1 className="text-5xl font-extrabold text-white mb-4">
-            Share Your Story
+            Share a Moment
           </h1>
           <p className="text-xl text-gray-200">
-            Create and share your experiences with the world
+            Upload anonymously. AI handles the rest.
           </p>
         </div>
 
@@ -147,7 +147,7 @@ export default function UploadPage() {
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-purple-400 focus:outline-none transition-all"
-                  placeholder="Give your story a catchy title..."
+                  placeholder="Give your moment a title..."
                   required
                 />
               </label>
@@ -157,13 +157,13 @@ export default function UploadPage() {
             <div className="space-y-2">
               <label className="block">
                 <span className="text-sm font-semibold text-white mb-2 block">
-                  Your Story
+                  Description
                 </span>
                 <textarea
                   value={story}
                   onChange={(e) => setStory(e.target.value)}
                   className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-purple-400 focus:outline-none transition-all min-h-[160px]"
-                  placeholder="What happened? What did it feel like? Share the details..."
+                  placeholder="Describe what's happening in this moment..."
                   required
                 />
               </label>
@@ -274,7 +274,7 @@ export default function UploadPage() {
                 disabled={loading || !title || !story}
                 className="flex-1 min-w-[200px] rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 text-white font-bold shadow-2xl hover:shadow-purple-500/50 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                🚀 Publish Story
+                🚀 Share Anonymously
               </button>
             </div>
           </form>

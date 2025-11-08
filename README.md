@@ -1,7 +1,7 @@
-Lenso — starter
-================
+Lenso
+=====
 
-Share the experiences you witness so others can feel like they were there.
+AI-powered platform for sharing photos and videos anonymously. Upload moments and let AI handle organization, tagging, and moderation automatically.
 
 Tech stack
 ----------
@@ -80,8 +80,11 @@ If you want to use `https://lenso.dev` locally:
 5) Run:
    - `npm run dev` then visit `https://lenso.dev`
 
-Showcase
+Features
 --------
-- Clear hero section and feature grid on the landing page.
-- Real-time demo feed that updates when you post.
-- Upload flow with AI assistance for summaries and tags.
+- Anonymous photo/video sharing - no profiles, no followers
+- AI-powered smart summaries and auto hashtag generation
+- Automatic content moderation using OpenAI
+- Real-time feed updates with Server-Sent Events
+- Modern glassmorphism UI with Tailwind CSS
+- Cloud storage integration with S3

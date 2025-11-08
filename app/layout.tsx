@@ -5,9 +5,9 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: "Lenso — See Through Others' Eyes",
+  title: "Lenso - AI-Powered Anonymous Moments",
   description:
-    'Share the experiences you witness so others can feel like they were there.',
+    'Share photos and videos anonymously. AI automatically organizes, tags, and moderates your moments.',
 }
 
 export default function RootLayout({
