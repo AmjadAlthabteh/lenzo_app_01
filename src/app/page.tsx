@@ -17,10 +17,18 @@ import Toasts from "@/components/Toasts";
 import LuxConsole from "@/components/LuxConsole";
 import CommandBridge from "@/components/CommandBridge";
 import SearchButton from "@/components/SearchButton";
+import MobileNav from "@/components/MobileNav";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen w-full bg-black text-zinc-200 font-sans">
+      {/* Skip to main content for accessibility */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-black focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
       {/* top subtle gradient */}
       <div
         aria-hidden
@@ -64,10 +72,11 @@ export default function Home() {
             <SearchButton />
             <AuroraToggle />
           </nav>
+          <MobileNav />
         </div>
       </header>
       {/* Hero */}
-      <main>
+      <main id="main-content">
         <section className="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
           <h1 className="luxin-gradient-text text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
             Luxin — the AI‑powered lighting OS
