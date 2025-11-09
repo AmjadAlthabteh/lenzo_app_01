@@ -44,8 +44,8 @@
     "type": "git",
     "url": "git+https://github.com/AmjadAlthabteh/lenzo_app_01.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["nextjs", "ai", "anonymous", "photo-sharing", "openai", "prisma", "tailwind"],
+  "author": "Lenso Team",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AmjadAlthabteh/lenzo_app_01/issues"

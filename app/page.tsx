@@ -19,7 +19,7 @@ export default function HomePage() {
         <div className="relative text-center max-w-4xl mx-auto fade-in">
           <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight text-white">
             AI-Powered
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600">
+            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
               Anonymous Moments
             </span>
           </h1>
@@ -30,7 +30,7 @@ export default function HomePage() {
           <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/upload"
-              className="inline-flex items-center rounded-full bg-white px-10 py-5 text-purple-600 font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
             >
               Share a Moment
               <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +102,7 @@ export default function HomePage() {
           <div className="mt-12 text-center">
             <Link
               href="/upload"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
             >
               Get Started
               <svg className="ml-2 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,7 +129,7 @@ function Feature({ icon, title, desc }: { icon: string; title: string; desc: str
 function Step({ number, title, desc }: { number: string; title: string; desc: string }) {
   return (
     <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white text-2xl font-bold mb-4 shadow-lg">
+      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-2xl font-bold mb-4 shadow-lg">
         {number}
       </div>
       <h3 className="text-xl font-bold text-white mb-2">{title}</h3>

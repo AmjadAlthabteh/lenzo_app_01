@@ -62,7 +62,7 @@ export default function FeedPage() {
               </p>
               <Link
                 href="/upload"
-                className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-white font-bold shadow-2xl hover:shadow-purple-500/50 transition-all hover:scale-105"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 px-8 py-4 text-white font-bold shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105"
               >
                 <span>Share a Moment</span>
                 <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

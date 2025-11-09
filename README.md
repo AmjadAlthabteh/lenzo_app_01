@@ -56,7 +56,7 @@ Next steps
 - Real-time: persist to a message bus (Pusher/Ably) for multi-instance.
 - Moderation: expand to image/video when storage is wired.
 - UI polish: consider shadcn/ui and dedicated upload component.
- - Strict mode: extend AI Task Manager to handle media moderation when storage is ready.
+- Strict mode: extend AI Task Manager to handle media moderation when storage is ready.
 
 Local .dev domain (optional)
 ----------------------------

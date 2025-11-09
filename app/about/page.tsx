@@ -45,19 +45,19 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold text-white mb-4">What's Next</h2>
           <ul className="space-y-3 text-gray-100 text-lg">
             <li className="flex items-start">
-              <span className="text-purple-400 mr-3 text-xl">•</span>
+              <span className="text-cyan-400 mr-3 text-xl">•</span>
               <span>Multiple media uploads per post</span>
             </li>
             <li className="flex items-start">
-              <span className="text-purple-400 mr-3 text-xl">•</span>
+              <span className="text-cyan-400 mr-3 text-xl">•</span>
               <span>Enhanced discovery with search and curated collections</span>
             </li>
             <li className="flex items-start">
-              <span className="text-purple-400 mr-3 text-xl">•</span>
+              <span className="text-cyan-400 mr-3 text-xl">•</span>
               <span>Community features like reactions and comments</span>
             </li>
             <li className="flex items-start">
-              <span className="text-purple-400 mr-3 text-xl">•</span>
+              <span className="text-cyan-400 mr-3 text-xl">•</span>
               <span>Advanced AI tools with user controls</span>
             </li>
           </ul>
@@ -66,7 +66,7 @@ export default function AboutPage() {
         <div className="text-center">
           <Link
             href="/upload"
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-purple-600 to-pink-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
           >
             Share Your First Moment
             <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

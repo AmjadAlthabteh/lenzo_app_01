@@ -146,7 +146,7 @@ export default function UploadPage() {
                 <input
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-purple-400 focus:outline-none transition-all"
+                  className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-cyan-400 focus:outline-none transition-all"
                   placeholder="Give your moment a title..."
                   required
                 />
@@ -200,7 +200,7 @@ export default function UploadPage() {
                       type="button"
                       onClick={uploadToS3}
                       disabled={loading}
-                      className="mt-2 w-full rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-2 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50"
+                      className="mt-2 w-full rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 px-4 py-2 text-white font-semibold hover:shadow-lg transition-all disabled:opacity-50"
                     >
                       {loading ? 'Uploading...' : 'Upload to Cloud'}
                     </button>
@@ -212,7 +212,7 @@ export default function UploadPage() {
                   <input
                     value={mediaUrl}
                     onChange={(e) => setMediaUrl(e.target.value)}
-                    className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-purple-400 focus:outline-none transition-all"
+                    className="w-full rounded-xl glass px-4 py-3 text-white placeholder-gray-300 border-2 border-white/20 focus:border-cyan-400 focus:outline-none transition-all"
                     placeholder="Or paste media URL..."
                   />
                   <button
@@ -229,7 +229,7 @@ export default function UploadPage() {
 
             {/* AI Suggestions */}
             {(aiSummary || aiTags) && (
-              <div className="glass rounded-2xl p-6 border-2 border-purple-400/50">
+              <div className="glass rounded-2xl p-6 border-2 border-cyan-400/50">
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-2xl">🤖</span>
                   <p className="text-sm font-semibold text-white">AI Suggestions</p>
@@ -272,7 +272,7 @@ export default function UploadPage() {
               <button
                 type="submit"
                 disabled={loading || !title || !story}
-                className="flex-1 min-w-[200px] rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-3 text-white font-bold shadow-2xl hover:shadow-purple-500/50 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                className="flex-1 min-w-[200px] rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 px-6 py-3 text-white font-bold shadow-2xl hover:shadow-cyan-500/50 transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 🚀 Share Anonymously
               </button>

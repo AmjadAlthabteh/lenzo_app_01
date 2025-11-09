@@ -7,7 +7,7 @@ export async function Navbar() {
   return (
     <header className="border-b border-white/10 backdrop-blur-sm bg-black/20">
       <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-white hover:text-purple-300 transition">
+        <Link href="/" className="text-2xl font-bold text-white hover:text-cyan-300 transition">
           Lenso
         </Link>
         <nav className="flex items-center gap-6 text-sm">
