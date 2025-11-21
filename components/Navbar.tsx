@@ -1,26 +1,25 @@
+"use client"
 import Link from 'next/link'
-import { auth } from '@/lib/auth'
 import { SignInOut } from '@/components/SignInOut'
 
-export async function Navbar() {
-  const session = await auth()
+export function Navbar() {
   return (
-    <header className="border-b border-white/10 backdrop-blur-sm bg-black/20">
-      <div className="container-page flex h-16 items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-white hover:text-cyan-300 transition">
+    <header className="border-b border-white/20 backdrop-blur-md bg-white/10">
+      <div className="container-page flex h-20 items-center justify-between">
+        <Link href="/" className="text-2xl font-bold text-white hover:text-blue-100 transition-colors">
           Lenso
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
-          <Link href="/feed" className="text-gray-200 hover:text-white font-medium transition">
+        <nav className="flex items-center gap-8">
+          <Link href="/feed" className="text-white/90 hover:text-white font-semibold transition-colors text-sm">
             Feed
           </Link>
-          <Link href="/upload" className="text-gray-200 hover:text-white font-medium transition">
+          <Link href="/upload" className="text-white/90 hover:text-white font-semibold transition-colors text-sm">
             Upload
           </Link>
-          <Link href="/about" className="text-gray-200 hover:text-white font-medium transition">
+          <Link href="/about" className="text-white/90 hover:text-white font-semibold transition-colors text-sm">
             About
           </Link>
-          <SignInOut userName={session?.user?.name || null} />
+          <SignInOut />
         </nav>
       </div>
     </header>

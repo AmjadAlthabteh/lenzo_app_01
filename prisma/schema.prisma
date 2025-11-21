@@ -8,15 +8,86 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(cuid())
-  name          String?
-  email         String?  @unique
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  posts         Post[]
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id                String              @id @default(cuid())
+  name              String?
+  email             String?             @unique
+  password          String?             // Hashed password
+  image             String?
+  role              String              @default("USER") // USER, MODERATOR, ADMIN, SUPER_ADMIN
+
+  // 2FA fields
+  twoFactorEnabled  Boolean             @default(false)
+  twoFactorSecret   String?             // TOTP secret (encrypted)
+  backupCodes       String?             // Encrypted JSON array of backup codes
+
+  // Security
+  emailVerified     DateTime?
+  locked            Boolean             @default(false)
+  failedLoginAttempts Int              @default(0)
+  lastFailedLogin   DateTime?
+
+  // Relations
+  accounts          Account[]
+  sessions          Session[]
+  posts             Post[]
+  permissions       UserPermission[]
+  collaborations    Collaboration[]
+  activities        Activity[]
+
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+}
+
+model Permission {
+  id          String           @id @default(cuid())
+  name        String           @unique       // e.g., "post:create", "user:delete", "admin:access"
+  description String?
+  users       UserPermission[]
+  createdAt   DateTime         @default(now())
+}
+
+model UserPermission {
+  userId       String
+  permissionId String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+  grantedAt    DateTime   @default(now())
+
+  @@id([userId, permissionId])
+}
+
+model Collaboration {
+  id          String   @id @default(cuid())
+  postId      String
+  userId      String
+  type        String   // "edit", "view", "comment"
+  isActive    Boolean  @default(true)
+  cursorPos   String?  // JSON: {x, y, selection}
+  lastSeenAt  DateTime @default(now())
+
+  post        Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([postId, userId])
+}
+
+model Activity {
+  id          String   @id @default(cuid())
+  userId      String
+  action      String   // "login", "logout", "post.create", "post.edit", etc.
+  entityType  String?  // "post", "user", etc.
+  entityId    String?
+  metadata    String?  // Encrypted JSON with additional details
+  ipAddress   String?
+  userAgent   String?
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@index([userId, createdAt])
 }
 
 model Account {
@@ -54,22 +125,29 @@ model VerificationToken {
 }
 
 model Post {
-  id              String    @id @default(cuid())
+  id              String          @id @default(cuid())
   title           String
   story           String
   summary         String?
   mediaUrl        String?
-  mediaType       String?   // image, video, etc.
-  aiDescription   String?   // AI-generated image description
-  aiObjects       String?   // Detected objects (JSON array)
-  aiColors        String?   // Dominant colors (JSON array)
-  aiLabels        String?   // AI-detected labels/categories (JSON array)
-  aiConfidence    Float?    // AI analysis confidence score
+  mediaType       String?         // image, video, etc.
+  aiDescription   String?         // AI-generated image description
+  aiObjects       String?         // Detected objects (JSON array)
+  aiColors        String?         // Dominant colors (JSON array)
+  aiLabels        String?         // AI-detected labels/categories (JSON array)
+  aiConfidence    Float?          // AI analysis confidence score
+
+  // Collaboration & encryption
+  encryptedData   String?         // Encrypted sensitive content
+  isPublic        Boolean         @default(true)
+  allowCollaboration Boolean      @default(false)
+
   authorId        String
-  author          User      @relation(fields: [authorId], references: [id])
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
+  author          User            @relation(fields: [authorId], references: [id])
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
   tags            PostTag[]
+  collaborations  Collaboration[]
 }
 
 model Tag {

@@ -2,139 +2,240 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Home - Lenso',
-  description: 'Share photos and videos anonymously. AI automatically organizes, tags, and moderates your moments.',
+  title: 'Lenso - Professional Content Collaboration Platform',
+  description: 'Real-time collaboration with enterprise security, role-based access, and team management.',
 }
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative container-page py-20 sm:py-32 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
-        </div>
+      <section className="container-page pt-24 pb-32">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center slide-up">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 glass rounded-full text-sm font-semibold text-blue-900 mb-10 border border-white/40">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+              </span>
+              Live Collaboration Enabled
+            </div>
 
-        <div className="relative text-center max-w-4xl mx-auto fade-in">
-          <h1 className="text-5xl sm:text-7xl font-extrabold tracking-tight leading-tight text-white">
-            AI-Powered
-            <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400">
-              Anonymous Moments
-            </span>
-          </h1>
-          <p className="mt-8 text-xl sm:text-2xl text-gray-100 leading-relaxed max-w-3xl mx-auto">
-            Share your photos and videos anonymously.
-            Let AI organize, tag, and moderate your moments automatically.
-          </p>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/upload"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
-            >
-              Share a Moment
-              <svg className="ml-2 w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
-            <Link
-              href="/feed"
-              className="inline-flex items-center rounded-full glass px-10 py-5 text-white font-bold text-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300"
-            >
-              View Feed
-            </Link>
+            <h1 className="heading-1 text-white mb-8">
+              Collaborate in Real-Time
+              <br />
+              <span className="text-blue-200">With Your Team</span>
+            </h1>
+
+            <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed font-medium">
+              Secure content platform with live editing, role-based permissions, and enterprise-grade security. Built for teams that value privacy and control.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-5 mb-16">
+              <Link href="/register" className="btn btn-primary px-10 py-5 text-lg">
+                Start Free Trial
+              </Link>
+              <Link href="/login" className="btn btn-ghost px-10 py-5 text-lg">
+                Sign In
+              </Link>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto glass rounded-2xl p-8 border border-white/30">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">256-bit</div>
+                <div className="text-blue-200 text-sm font-medium">Encryption</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">Real-Time</div>
+                <div className="text-blue-200 text-sm font-medium">Collaboration</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-white mb-2">4 Roles</div>
+                <div className="text-blue-200 text-sm font-medium">Permission Levels</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="container-page pb-20">
-        <div className="text-center mb-16 fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            Simple. Smart. Safe.
-          </h2>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
-            Everything you need to share moments without the complexity
-          </p>
-        </div>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-          <Feature
-            icon="🤖"
-            title="AI Organization"
-            desc="Automatic summaries and hashtags for every upload. No manual tagging needed."
-          />
-          <Feature
-            icon="🔒"
-            title="100% Anonymous"
-            desc="Share freely without revealing your identity. Your moments, your privacy."
-          />
-          <Feature
-            icon="🛡️"
-            title="Auto Moderation"
-            desc="AI-powered content filtering keeps the community safe and welcoming."
-          />
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="container-page pb-20">
-        <div className="glass rounded-3xl p-8 sm:p-12 fade-in max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-8 text-center">
-            How It Works
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            <Step
-              number="1"
-              title="Upload"
-              desc="Add your photo or video with a title and description"
-            />
-            <Step
-              number="2"
-              title="AI Processing"
-              desc="Our AI creates summaries, tags, and moderates content automatically"
-            />
-            <Step
-              number="3"
-              title="Share"
-              desc="Your moment appears in the feed instantly and anonymously"
-            />
+      <section className="container-page pb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="heading-2 text-white mb-5">
+              Everything Teams Need
+            </h2>
+            <p className="text-xl text-blue-100 max-w-2xl mx-auto">
+              Professional tools for secure content collaboration
+            </p>
           </div>
-          <div className="mt-12 text-center">
-            <Link
-              href="/upload"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 px-10 py-5 text-white font-bold text-lg shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
-            >
-              Get Started
-              <svg className="ml-2 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </Link>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              title="Live Presence"
+              description="See who's online and actively editing. Real-time cursor tracking and instant updates across all team members."
+            />
+            <FeatureCard
+              title="Two-Factor Auth"
+              description="Secure your account with TOTP-based 2FA. Compatible with Google Authenticator, Authy, and all major apps."
+            />
+            <FeatureCard
+              title="Role Management"
+              description="Four permission levels: User, Moderator, Admin, Super Admin. Granular control over who can do what."
+            />
+            <FeatureCard
+              title="Activity Logs"
+              description="Complete audit trail of all actions. Track logins, changes, and access for compliance and security."
+            />
+            <FeatureCard
+              title="Rate Limiting"
+              description="Built-in protection against abuse. Intelligent rate limiting keeps your platform secure and responsive."
+            />
+            <FeatureCard
+              title="Admin Dashboard"
+              description="Comprehensive admin panel for user management, role assignment, and system monitoring."
+            />
           </div>
         </div>
       </section>
+
+      {/* Demo Section */}
+      <section className="container-page pb-24">
+        <div className="max-w-5xl mx-auto">
+          <div className="card p-10 scale-in">
+            <div className="text-center mb-10">
+              <h2 className="heading-2 text-gray-900 mb-4">
+                See It In Action
+              </h2>
+              <p className="text-lg text-muted max-w-2xl mx-auto">
+                Try the live demo or create your own account to explore all features
+              </p>
+            </div>
+
+            {/* Demo Preview */}
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-8 mb-8 border-2 border-blue-200">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Demo Access</h3>
+                  <ul className="space-y-3 text-gray-700">
+                    <li className="flex items-start gap-3">
+                      <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Click "View Demo" to browse content</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Create an account to upload and collaborate</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <svg className="w-6 h-6 text-green-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>Enable 2FA in your dashboard for extra security</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Key Features</h3>
+                  <div className="space-y-3">
+                    <div className="badge badge-primary text-sm">Secure Authentication</div>
+                    <div className="badge badge-success text-sm ml-2">Live Updates</div>
+                    <div className="badge badge-primary text-sm">Encrypted Storage</div>
+                    <div className="badge badge-success text-sm ml-2">Team Management</div>
+                    <div className="badge badge-primary text-sm">Activity Tracking</div>
+                    <div className="badge badge-success text-sm ml-2">Admin Controls</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/feed" className="btn btn-primary px-8 py-4">
+                View Demo Feed
+              </Link>
+              <Link href="/register" className="btn btn-secondary px-8 py-4">
+                Create Account
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="container-page pb-24">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="heading-2 text-white mb-5">
+              Built For Real Teams
+            </h2>
+            <p className="text-xl text-blue-100">
+              From startups to enterprises
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card p-8 card-hover">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Content Teams</h3>
+              <p className="text-muted leading-relaxed">
+                Collaborate on content creation with live editing, version tracking, and approval workflows. Perfect for marketing teams and agencies.
+              </p>
+            </div>
+            <div className="card p-8 card-hover">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Remote Workspaces</h3>
+              <p className="text-muted leading-relaxed">
+                Work from anywhere with real-time presence, instant sync, and secure access controls. Keep distributed teams connected.
+              </p>
+            </div>
+            <div className="card p-8 card-hover">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Enterprise Security</h3>
+              <p className="text-muted leading-relaxed">
+                Meet compliance requirements with comprehensive logging, 2FA, encryption, and role-based access controls.
+              </p>
+            </div>
+            <div className="card p-8 card-hover">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Project Management</h3>
+              <p className="text-muted leading-relaxed">
+                Organize work by projects with granular permissions. Control exactly who can view, edit, and publish at every level.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container-page pb-32">
+        <div className="max-w-4xl mx-auto">
+          <div className="glass rounded-2xl p-12 text-center border border-white/40">
+            <h2 className="text-4xl font-bold text-white mb-5">
+              Ready to Get Started?
+            </h2>
+            <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+              Create your account now and start collaborating with your team in minutes
+            </p>
+            <div className="flex flex-wrap justify-center gap-5">
+              <Link href="/register" className="btn bg-white text-blue-900 hover:bg-blue-50 px-10 py-5 text-lg font-bold">
+                Sign Up Free
+              </Link>
+              <Link href="/about" className="btn btn-ghost px-10 py-5 text-lg">
+                Learn More
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
 
-function Feature({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
-    <div className="text-center glass rounded-2xl p-8 hover:scale-105 transition-all duration-300">
-      <div className="text-5xl mb-4">{icon}</div>
-      <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
-      <p className="text-gray-200 leading-relaxed">{desc}</p>
+    <div className="card p-7 scale-in card-hover">
+      <h3 className="text-lg font-bold text-gray-900 mb-3">{title}</h3>
+      <p className="text-muted text-sm leading-relaxed">{description}</p>
     </div>
   )
 }
-
-function Step({ number, title, desc }: { number: string; title: string; desc: string }) {
-  return (
-    <div className="text-center">
-      <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-2xl font-bold mb-4 shadow-lg">
-        {number}
-      </div>
-      <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-      <p className="text-gray-200">{desc}</p>
-    </div>
-  )
-}
-

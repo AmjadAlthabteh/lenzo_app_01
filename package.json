@@ -15,13 +15,29 @@
     "@auth/prisma-adapter": "1.1.0",
     "@aws-sdk/client-s3": "3.676.0",
     "@aws-sdk/s3-request-presigner": "3.676.0",
+    "@prisma/client": "5.20.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/crypto-js": "^4.2.2",
+    "@types/ioredis": "^4.28.10",
+    "@types/qrcode": "^1.5.6",
+    "@types/ws": "^8.18.1",
+    "bcryptjs": "^3.0.3",
+    "crypto-js": "^4.2.0",
+    "express-rate-limit": "^8.2.1",
+    "ioredis": "^5.8.2",
     "next": "14.2.5",
+    "next-auth": "5.0.0-beta.20",
+    "otpauth": "^9.4.1",
+    "qrcode": "^1.5.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "next-auth": "5.0.0-beta.20",
-    "@prisma/client": "5.20.0",
-    "zod": "3.23.8",
-    "swr": "2.2.5"
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "swr": "2.2.5",
+    "ws": "^8.18.3",
+    "y-websocket": "^3.0.0",
+    "yjs": "^13.6.27",
+    "zod": "3.23.8"
   },
   "devDependencies": {
     "@types/node": "20.12.12",
@@ -31,9 +47,9 @@
     "eslint": "8.57.0",
     "eslint-config-next": "14.2.5",
     "postcss": "8.4.38",
+    "prisma": "5.20.0",
     "tailwindcss": "3.4.14",
-    "typescript": "5.4.5",
-    "prisma": "5.20.0"
+    "typescript": "5.4.5"
   },
   "description": "Lenso — starter ================",
   "main": "index.js",
@@ -44,7 +60,15 @@
     "type": "git",
     "url": "git+https://github.com/AmjadAlthabteh/lenzo_app_01.git"
   },
-  "keywords": ["nextjs", "ai", "anonymous", "photo-sharing", "openai", "prisma", "tailwind"],
+  "keywords": [
+    "nextjs",
+    "ai",
+    "anonymous",
+    "photo-sharing",
+    "openai",
+    "prisma",
+    "tailwind"
+  ],
   "author": "Lenso Team",
   "license": "ISC",
   "bugs": {
