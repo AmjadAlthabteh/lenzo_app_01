@@ -7,10 +7,10 @@
   "keywords": ["lighting", "ai", "smart-home", "iot", "circadian", "energy-optimization", "matter", "homekit"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/lighting-os.git"
+    "url": "https://github.com/AmjadAlthabteh/lenzo_app_01.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/lighting-os/issues"
+    "url": "https://github.com/AmjadAlthabteh/lenzo_app_01/issues"
   },
   "homepage": "https://luxai.dev",
   "engines": {
