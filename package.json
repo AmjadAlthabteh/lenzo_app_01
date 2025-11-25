@@ -2,13 +2,32 @@
   "name": "lighting-os",
   "version": "0.1.0",
   "private": true,
+  "description": "LuxAI - AI-powered lighting OS with autonomous scenes, adaptive circadian lighting, and energy optimization",
+  "author": "Amjad Althabeth",
+  "keywords": ["lighting", "ai", "smart-home", "iot", "circadian", "energy-optimization", "matter", "homekit"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/lighting-os.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/lighting-os/issues"
+  },
+  "homepage": "https://luxai.dev",
+  "engines": {
+    "node": ">=18.18.0",
+    "npm": ">=9.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "dev:3003": "next dev -p 3003",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "lux": "node tools/lux.mjs"
+    "lint:fix": "eslint --fix",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next out node_modules/.cache",
+    "lux": "node tools/lux.mjs",
+    "prepare": "npm run typecheck"
   },
   "dependencies": {
     "react": "19.2.0",
