@@ -18,6 +18,10 @@ import LuxConsole from "@/components/LuxConsole";
 import CommandBridge from "@/components/CommandBridge";
 import SearchButton from "@/components/SearchButton";
 import MobileNav from "@/components/MobileNav";
+import LightPreview from "@/components/LightPreview";
+import ScenesList from "@/components/ScenesList";
+import HelpModal from "@/components/HelpModal";
+import StatusBadge from "@/components/StatusBadge";
 
 export default function Home() {
   return (
@@ -75,6 +79,8 @@ export default function Home() {
           <MobileNav />
         </div>
       </header>
+      {/* Status badge */}
+      <StatusBadge />
       {/* Hero */}
       <main id="main-content">
         <section className="mx-auto max-w-6xl px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
@@ -193,6 +199,25 @@ export default function Home() {
             </Card3D>
           </div>
         </section>
+        {/* Live Demo: Light + Scenes */}
+        <section id="demo" className="mx-auto max-w-6xl px-6 pb-24 cv-auto">
+          <h2 className="text-xl font-medium text-zinc-100">Live Demo</h2>
+          <p className="mt-2 max-w-2xl text-sm text-zinc-500">
+            Try a sample light and apply preset scenes. These are local-only previews.
+          </p>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            <div className="sm:col-span-2">
+              <LightPreview />
+            </div>
+            <div className="rounded-lg border border-white/10 bg-white/5 p-4">
+              <p className="text-sm font-medium text-zinc-100">Scenes</p>
+              <p className="mt-1 text-xs text-zinc-400">Apply a preset to the demo light</p>
+              <div className="mt-3">
+                <ScenesList />
+              </div>
+            </div>
+          </div>
+        </section>
         {/* Composer preview (client-side mock; replace with backend proposal service) */}
         <section id="composer" className="mx-auto max-w-6xl px-6 pb-24 cv-auto">
           <h2 className="text-xl font-medium text-zinc-100">Compose a Scene</h2>
@@ -241,6 +266,7 @@ export default function Home() {
       <Dock />
       <Toasts />
       <LuxConsole />\r\n      <CommandBridge />
+      <HelpModal />
 
       <footer className="px-6 py-10 text-center text-xs text-zinc-500">
         © {new Date().getFullYear()} LuxAI
