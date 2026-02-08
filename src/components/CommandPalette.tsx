@@ -17,11 +17,10 @@ const ITEMS: Item[] = [
   { label: "Open LuxAI OS", href: "#os" },
 ];
 // Lightweight command palette for in-page navigation and OS opening
-export default function CommandPalette() {  const [open, setOpen] = useState(false);
+export default function CommandPalette() {
+  const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const inputRef = useRef<HTMLInputElement | null>(null);
-
-  
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -38,8 +37,6 @@ export default function CommandPalette() {  const [open, setOpen] = useState(fal
       window.removeEventListener("luxin-cmd-open", onCustom as EventListener);
     };
   }, []);
-
-  
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 0);
@@ -62,16 +59,42 @@ export default function CommandPalette() {  const [open, setOpen] = useState(fal
             ref={inputRef}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") { const res = runLuxCommand(q); if (res.handled) { if (res.message) window.dispatchEvent(new CustomEvent("luxin-toast", { detail: { text: res.message } })); setOpen(false); } } }}
-            className="w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none" />
-          <kbd className="rounded border border-white/20 px-1.5 py-0.5 text-[10px] text-zinc-400">esc</kbd>
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                const res = runLuxCommand(q);
+                if (res.handled) {
+                  if (res.message) {
+                    window.dispatchEvent(
+                      new CustomEvent("luxin-toast", {
+                        detail: { text: res.message },
+                      })
+                    );
+                  }
+                  setOpen(false);
+                }
+              }
+            }}
+            placeholder="Type a command or search..."
+            className="w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
+          />
+          <kbd className="rounded border border-white/20 px-1.5 py-0.5 text-[10px] text-zinc-400">
+            esc
+          </kbd>
         </div>
         <ul className="max-h-60 overflow-auto p-2 text-sm">
           {results.map((i) => (
             <li key={i.href}>
               <a
                 href={i.href}
-                onClick={(e) => { if (i.href === "#os") { e.preventDefault(); setOpen(false); window.dispatchEvent(new Event("luxai-os-open")); } else { setOpen(false); } }}
+                onClick={(e) => {
+                  if (i.href === "#os") {
+                    e.preventDefault();
+                    setOpen(false);
+                    window.dispatchEvent(new Event("luxai-os-open"));
+                  } else {
+                    setOpen(false);
+                  }
+                }}
                 className="block rounded-md px-3 py-2 text-zinc-300 hover:bg-white/5 hover:text-zinc-100"
               >
                 {i.label}
