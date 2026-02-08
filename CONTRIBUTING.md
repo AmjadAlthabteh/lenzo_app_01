@@ -4,173 +4,143 @@ Thank you for your interest in contributing to LuxAI! This document provides gui
 
 ## Getting Started
 
-### Prerequisites
+1. **Fork the repository** and clone it locally
+2. **Install dependencies**: `npm ci`
+3. **Create a branch**: `git checkout -b feature/your-feature-name`
+4. **Make your changes** and test them locally
+5. **Commit your changes** with clear commit messages
+6. **Push to your fork** and submit a pull request
 
-- Node.js >= 18.18 or 20+
-- npm (comes with Node.js)
-- Git
-
-### Setup
-
-1. Fork and clone the repository:
-   ```bash
-   git clone https://github.com/your-username/lighting-os.git
-   cd lighting-os
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm ci
-   ```
-
-3. Copy the environment template:
-   ```bash
-   cp .env.local.example .env.local
-   ```
-
-4. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Development Workflow
-
-### Before Making Changes
-
-1. Read the TODO Protocol in `docs/TODO.md`
-2. Review the code guidelines in `README.md`
-3. Ensure your development environment is set up correctly
-
-### Making Changes
-
-1. Create a new branch from `main`:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. Make your changes following our code standards:
-   - Use TypeScript strict mode
-   - Prefer Tailwind utilities over custom CSS
-   - Keep components in `src/components/` with PascalCase filenames
-   - Follow the preflight → plan → implement → validate → document workflow
-
-3. Test your changes:
-   ```bash
-   npm run lint      # Run ESLint
-   npm run build     # Build the project
-   npm run dev       # Test in development mode
-   ```
-
-### Code Standards
-
-- **TypeScript**: Use strict mode, provide proper types
-- **React**: Use functional components with hooks
-- **Styling**: Tailwind CSS utilities preferred
-- **Accessibility**: Ensure keyboard navigation and screen reader support
-- **Performance**: Optimize images, lazy load heavy components
-- **Security**: Never commit secrets or sensitive data
-
-### Commit Messages
-
-Follow conventional commits format:
-
-```
-feat: add new lighting scene composer
-fix: resolve aurora animation performance issue
-docs: update README with deployment instructions
-style: improve button hover states
-refactor: simplify command palette logic
-test: add unit tests for scene generator
-chore: update dependencies
-```
-
-### Pull Request Process
-
-1. Update your branch with the latest `main`:
-   ```bash
-   git fetch origin
-   git rebase origin/main
-   ```
-
-2. Push your branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-3. Open a Pull Request with:
-   - Clear title describing the change
-   - Description of what changed and why
-   - Screenshots for UI changes
-   - Link to related issues
-
-4. Ensure CI checks pass:
-   - ESLint passes
-   - Build succeeds
-   - No TypeScript errors
-
-5. Address review feedback and update your PR
-
-## Project Structure
-
-```
-lighting-os/
-├── src/
-│   ├── app/              # Next.js app router pages
-│   │   ├── api/          # API routes
-│   │   ├── layout.tsx    # Root layout with metadata
-│   │   ├── page.tsx      # Homepage
-│   │   └── globals.css   # Global styles and theme tokens
-│   ├── components/       # React components
-│   ├── lib/              # Utilities and libraries
-│   └── types/            # TypeScript type definitions
-├── public/               # Static assets
-├── docs/                 # Documentation
-└── tools/                # Build and dev tools
-```
-
-## Available Scripts
+## Development Setup
 
 ```bash
-npm run dev       # Start dev server
-npm run dev:3003  # Start dev server on port 3003
-npm run build     # Build for production
-npm run start     # Start production server
-npm run lint      # Run ESLint
-npm run lux       # Run Luxin CLI tool
+# Install dependencies
+npm ci
+
+# Run development server
+npm run dev
+
+# Run type checking
+npm run typecheck
+
+# Run linter
+npm run lint
+
+# Fix linting issues
+npm run lint:fix
 ```
+
+## Code Guidelines
+
+### TypeScript
+- Use TypeScript strict mode
+- Avoid using `any` type - prefer proper typing
+- Export types and interfaces for reusable components
+- Use type inference where possible
+
+### React Components
+- Use functional components with hooks
+- Keep components focused and single-purpose
+- Extract reusable logic into custom hooks
+- Add JSDoc comments for complex components
+
+### Styling
+- Prefer Tailwind utilities over custom CSS
+- Use semantic color tokens from the theme
+- Ensure responsive design (mobile-first)
+- Test dark mode compatibility
+
+### File Organization
+- Components go in `src/components/` with PascalCase names
+- Utilities go in `src/lib/`
+- Types go in `src/types/`
+- Keep files focused and under 300 lines when possible
+
+### Naming Conventions
+- **Components**: PascalCase (`CommandPalette.tsx`)
+- **Utilities**: camelCase (`luxCommands.ts`)
+- **Types**: PascalCase for interfaces and types
+- **Constants**: UPPER_SNAKE_CASE
+
+## Commit Messages
+
+Write clear, concise commit messages following this format:
+
+```
+type: brief description
+
+- Detailed change 1
+- Detailed change 2
+- Detailed change 3
+```
+
+### Commit Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `refactor`: Code refactoring
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks
+
+### Example
+```
+feat: add scene scheduling functionality
+
+- Add DatePicker component for schedule selection
+- Implement schedule storage in local state
+- Add validation for schedule conflicts
+- Update Scene interface with schedule field
+```
+
+## Pull Request Process
+
+1. **Update documentation** if you're adding new features
+2. **Test your changes** thoroughly in development mode
+3. **Run type checking** and linting before submitting
+4. **Keep PRs focused** - one feature or fix per PR
+5. **Write a clear PR description** explaining what and why
+6. **Link related issues** using keywords like "Fixes #123"
+
+### PR Checklist
+- [ ] Code follows project style guidelines
+- [ ] TypeScript compiles without errors
+- [ ] ESLint passes without errors
+- [ ] Tested on different screen sizes
+- [ ] No console errors or warnings
+- [ ] Documentation updated if needed
 
 ## Testing
 
-Currently, the project uses:
-- ESLint for code quality
-- TypeScript for type checking
-- Manual testing in development
+Currently, the project focuses on type safety and linting. When writing code:
 
-We welcome contributions to add automated testing!
+- Test components visually in the browser
+- Check for TypeScript errors: `npm run typecheck`
+- Check for console errors and warnings
+- Test across different browsers if possible
+- Verify responsive behavior on mobile
 
-## Reporting Issues
+## Code Review
 
-When reporting issues, please include:
+All submissions require review. We'll provide feedback on:
 
-1. Clear description of the problem
-2. Steps to reproduce
-3. Expected vs actual behavior
-4. Screenshots (for UI issues)
-5. Environment details (OS, browser, Node version)
-
-## Code of Conduct
-
-- Be respectful and inclusive
-- Provide constructive feedback
-- Focus on the code, not the person
-- Help others learn and grow
+- Code quality and style
+- TypeScript type safety
+- Performance considerations
+- Accessibility compliance
+- Security concerns
 
 ## Questions?
 
-Feel free to open an issue for questions or reach out to the maintainers.
+If you have questions or need clarification:
+
+- Open an issue for discussion
+- Check existing issues and PRs
+- Review the README.md and docs/ folder
 
 ## License
 
 By contributing, you agree that your contributions will be licensed under the same license as the project.
+
+Thank you for contributing to LuxAI! 🎨
