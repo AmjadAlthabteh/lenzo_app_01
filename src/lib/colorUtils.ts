@@ -240,14 +240,25 @@ export function rgbToHex(rgb: RGB): string {
 
 /**
  * Convert hex color string to RGB
- * @param hex Hex color string (e.g., "#ff5733" or "ff5733")
+ * @param hex Hex color string (e.g., "#ff5733", "ff5733", or "#fff")
  * @returns RGB color object
+ * @throws Error if hex string is invalid
  */
 export function hexToRgb(hex: string): RGB {
   const clean = hex.replace("#", "");
-  const r = parseInt(clean.substring(0, 2), 16);
-  const g = parseInt(clean.substring(2, 4), 16);
-  const b = parseInt(clean.substring(4, 6), 16);
+
+  if (!/^[0-9A-Fa-f]{3}$|^[0-9A-Fa-f]{6}$/.test(clean)) {
+    throw new Error(`Invalid hex color: ${hex}`);
+  }
+
+  // Handle short form (#fff -> #ffffff)
+  const expanded = clean.length === 3
+    ? clean.split("").map(c => c + c).join("")
+    : clean;
+
+  const r = parseInt(expanded.substring(0, 2), 16);
+  const g = parseInt(expanded.substring(2, 4), 16);
+  const b = parseInt(expanded.substring(4, 6), 16);
   return { r, g, b };
 }
 
