@@ -69,6 +69,15 @@ export default function LuxConsole() {  const [open, setOpen] = useState(false);
           >
             Run
           </button>
+          {log.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setLog([])}
+              className="rounded-md border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-zinc-300 hover:bg-white/20"
+            >
+              Clear
+            </button>
+          )}
           <button
             type="button"
             onClick={() => setOpen(false)}
