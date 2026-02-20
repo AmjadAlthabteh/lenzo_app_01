@@ -2,13 +2,34 @@
 
 import { useEffect, useRef, useState } from "react";
 import { runLuxCommand } from "@/lib/luxCommands";
+import { STORAGE_KEYS } from "@/lib/constants";
 
 type Entry = { id: number; text: string; kind: "in" | "out" };
 
-export default function LuxConsole() {  const [open, setOpen] = useState(false);
+const MAX_HISTORY = 50;
+
+export default function LuxConsole() {
+  const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
   const [log, setLog] = useState<Entry[]>([]);
+  const [history, setHistory] = useState<string[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Load command history from localStorage on mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.COMMAND_HISTORY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          setHistory(parsed);
+        }
+      }
+    } catch (error) {
+      console.warn("Failed to load command history:", error);
+    }
+  }, []);
 
   useEffect(() => {
     const onOpen = () => setOpen(true);
@@ -31,11 +52,52 @@ export default function LuxConsole() {  const [open, setOpen] = useState(false);
   const submit = () => {
     const text = q.trim();
     if (!text) return;
+
+    // Add to log
     const id = Date.now() + Math.random();
     setLog((l) => [...l, { id, text, kind: "in" }]);
+
+    // Run command
     const { handled, message } = runLuxCommand(text);
     if (handled && message) setLog((l) => [...l, { id: id + 1, text: message, kind: "out" }]);
+
+    // Add to history (avoid duplicates of last command)
+    if (history[0] !== text) {
+      const newHistory = [text, ...history].slice(0, MAX_HISTORY);
+      setHistory(newHistory);
+      try {
+        localStorage.setItem(STORAGE_KEYS.COMMAND_HISTORY, JSON.stringify(newHistory));
+      } catch (error) {
+        console.warn("Failed to save command history:", error);
+      }
+    }
+
+    // Reset input and history navigation
     setQ("");
+    setHistoryIndex(-1);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      submit();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      if (history.length > 0 && historyIndex < history.length - 1) {
+        const newIndex = historyIndex + 1;
+        setHistoryIndex(newIndex);
+        setQ(history[newIndex]);
+      }
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        const newIndex = historyIndex - 1;
+        setHistoryIndex(newIndex);
+        setQ(history[newIndex]);
+      } else if (historyIndex === 0) {
+        setHistoryIndex(-1);
+        setQ("");
+      }
+    }
   };
 
   if (!open) return null;
@@ -58,8 +120,8 @@ export default function LuxConsole() {  const [open, setOpen] = useState(false);
             ref={inputRef}
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") submit(); }}
-            placeholder="lux â€¦"
+            onKeyDown={handleKeyDown}
+            placeholder="lux … (↑/↓ for history)"
             className="w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none"
           />
           <button
