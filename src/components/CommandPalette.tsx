@@ -28,6 +28,10 @@ export default function CommandPalette() {
         e.preventDefault();
         setOpen(true);
       }
+      if (e.key === "Escape" && open) {
+        e.preventDefault();
+        setOpen(false);
+      }
     };
     const onCustom = () => setOpen(true);
     window.addEventListener("keydown", onKey);
@@ -36,7 +40,7 @@ export default function CommandPalette() {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("luxin-cmd-open", onCustom as EventListener);
     };
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 0);
