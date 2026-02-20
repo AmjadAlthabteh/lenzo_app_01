@@ -25,6 +25,13 @@ export async function POST(req: Request) {
   try {
     const body = (await req.json()) as { cmd?: string };
     const cmd = (body.cmd || "").toString();
+
+    if (cmd.length > 1000) {
+      const res = NextResponse.json({ error: "Command too long" }, { status: 400 });
+      Object.entries(corsHeaders).forEach(([k, v]) => res.headers.set(k, v));
+      return res;
+    }
+
     last = { id: last.id + 1, cmd, at: new Date().toISOString() };
     const res = NextResponse.json({ ok: true, id: last.id });
     Object.entries(corsHeaders).forEach(([k, v]) => res.headers.set(k, v));
