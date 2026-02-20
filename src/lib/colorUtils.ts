@@ -280,3 +280,28 @@ export function calculateBrightness(rgb: RGB): number {
 export function isLightColor(rgb: RGB): boolean {
   return calculateBrightness(rgb) > 128;
 }
+
+/**
+ * Calculate estimated power consumption for a light
+ * @param maxWattage Maximum power consumption of the device in watts
+ * @param brightnessPercent Current brightness level (0-100)
+ * @param rgb Optional RGB color (affects power draw for RGB LEDs)
+ * @returns Estimated power consumption in watts
+ */
+export function calculatePowerUsage(
+  maxWattage: number,
+  brightnessPercent: number,
+  rgb?: RGB
+): number {
+  const brightnessRatio = Math.max(0, Math.min(100, brightnessPercent)) / 100;
+  let powerUsage = maxWattage * brightnessRatio;
+
+  // RGB LEDs typically use more power for bright colors
+  if (rgb) {
+    const brightness = calculateBrightness(rgb);
+    const colorFactor = 1 + (brightness / 255) * 0.15; // Up to 15% more for bright colors
+    powerUsage *= colorFactor;
+  }
+
+  return Math.round(powerUsage * 100) / 100;
+}
